@@ -1,21 +1,24 @@
-import streamlit as st
-import time
+import os
+os.system("cls")
 
-st.title("Soma")
-st.header("Laço de repetição")
-st.write("Escrever um programa de computador que solicite do usuario 5 numeros inteiros e,ao final, apresente a soma de todos os numeros lidos")
+quantidade_notas = 0
+nota_final = 0
+contador = 0
+while True:
+    add_nota = input("Deseja adicionar mais uma nota? (s/n): " ).lower()
+    if add_nota == "n":
+        break
+    elif add_nota == "s":
+        nota = int(input("Digite a sua nota: "))
+        nota_final += nota
+        quantidade_notas += 1
+        contador += 1
 
-soma = 0
+        if quantidade_notas > 0:
+            media = nota_final/quantidade_notas
+            print(f"Média atual: {media:.2f}")
+            print(f"Iterações realizadas: {contador}")  # Exibe o contador de iterações
+    else:
+         print("Resposta inválida! Por favor, digite 's' para sim ou 'n' para não.")
 
-for i in range(1,6):
-    num = st.number_input(f"Digite o {i} numero: ", step=1, min_value=0)
-    soma = soma + num
-    time.sleep(1)
-    if num != 0:
-        continue
-if st.button("Inicie a soma"):
-    st.success(F"O resultado da soma é: {soma}")
-
-
-else:
-    st.info("Informe um numero")
+         
